@@ -3,7 +3,7 @@ package stepDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+import org. junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pages.CartPage;
@@ -42,13 +42,11 @@ public class StepDefinitionSauceDemo {
     }
     @When("user enters the {string}")
     public void user_enters_the_username(String username) {
-        String userEmail = prop.getProperty("email");
-        login.enterUserName(userEmail);
+        login.enterUserName(prop.getProperty("email"));
     }
     @When("user enter the {string}")
     public void user_enters_the_password(String pass){
-        String userPassword = prop.getProperty("password");
-        login.enterPassword(userPassword);
+        login.enterPassword(prop.getProperty("password"));
     }
     @When("user clicks the login button")
     public void user_clicks_the_login_button() {
@@ -57,7 +55,6 @@ public class StepDefinitionSauceDemo {
     @When("user selects item backpack")
     public void user_selects_item_item() {
         Assert.assertEquals("Sauce Labs Backpack", prod.checkProducts());
-        prod.checkProducts().equalsIgnoreCase("Sauce Labs Backpack");
         cart = prod.clickBagPackItem();
     }
     @Then("user selects shopping cart")
@@ -72,18 +69,15 @@ public class StepDefinitionSauceDemo {
     }
     @Then("user enters First Name {string}")
     public void user_enters_first_name(String name) {
-        String userFirstName = prop.getProperty("firstname");
-        checkout.enterFirstname(userFirstName);
+        checkout.enterFirstname(prop.getProperty("firstname"));
     }
     @Then("user enters Last Name {string}")
     public void user_enters_last_name(String last) {
-        String userLastName = prop.getProperty("lastname");
-        checkout.enterLastName(userLastName);
+        checkout.enterLastName(prop.getProperty("lastname"));
     }
     @Then("user enters Postal Code {string}")
     public void user_enters_postal_code(String postcode) {
-        String userPostcode = prop.getProperty("postcode");
-        checkout.enterpostcode(userPostcode);
+        checkout.enterpostcode(prop.getProperty("postcode"));
     }
     @Then("user clicks continue")
     public void user_clicks_continue() {

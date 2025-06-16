@@ -1,5 +1,7 @@
 package pages;
 
+import Utility.CommonPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CheckoutPage {
     WebDriver driver;
+    CommonPage commonpage;
 
     public CheckoutPage(WebDriver driver){
         this.driver = driver;
@@ -28,6 +31,8 @@ public class CheckoutPage {
     WebElement finishButton;
     @FindBy(css = "h2[data-test='complete-header']")
     WebElement confirmMessage;
+
+    By Locator = By.cssSelector("span.title");
 
 
     public void clickCheckOutButton(){
@@ -52,6 +57,8 @@ public class CheckoutPage {
         finishButton.click();
     }
     public String checkConfirmationMessage(){
+        commonpage = new CommonPage(driver);
+        commonpage.waitForElementToVisible(Locator);
         return confirmMessage.getText();
 
     }
