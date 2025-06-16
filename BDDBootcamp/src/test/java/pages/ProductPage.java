@@ -22,8 +22,6 @@ public class ProductPage {
     @FindBy(id = "add-to-cart-sauce-labs-backpack")
     WebElement addToCart;
 
-    By locator = By.id("add-to-cart");
-
     public String checkProducts(){
         return bagPackItem.getText();
     }

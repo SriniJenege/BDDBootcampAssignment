@@ -20,7 +20,7 @@ public class StepDefinitionSauceDemo {
     FileInputStream fs;
     Properties prop;
     LoginPage login;
-    ProductPage prod;
+    ProductPage product;
     CartPage cart;
     CheckoutPage checkout;
 
@@ -37,11 +37,11 @@ public class StepDefinitionSauceDemo {
     }
     @When("user is on the main page")
     public void user_is_on_the_main_page() {
-        System.out.println(System.getProperty("user.dir"));
+        //System.out.println(System.getProperty("user.dir"));
         Assert.assertEquals("Swag Labs", driver.getTitle());
     }
     @When("user enters the {string}")
-    public void user_enters_the_username(String username) {
+    public void user_enters_the_username(String user) {
         login.enterUserName(prop.getProperty("email"));
     }
     @When("user enter the {string}")
@@ -50,17 +50,20 @@ public class StepDefinitionSauceDemo {
     }
     @When("user clicks the login button")
     public void user_clicks_the_login_button() {
-        prod = login.clickSubmitButton();
+        //Returns the object of productPage
+        product = login.clickSubmitButton();
     }
     @When("user selects item backpack")
     public void user_selects_item_item() {
-        Assert.assertEquals("Sauce Labs Backpack", prod.checkProducts());
-        cart = prod.clickBagPackItem();
+        Assert.assertEquals("Sauce Labs Backpack", product.checkProducts());
+        //Returns the object of cartPage
+        cart = product.clickBagPackItem();
     }
     @Then("user selects shopping cart")
     public void user_selects_shopping_cart() {
         Assert.assertEquals("Sauce Labs Backpack",cart.checkItem());
         Assert.assertEquals("$29.99", cart.checkPrice());
+        //Returns the object of checkoutPage
         checkout = cart.clickCartContainer();
     }
     @Then("user selects checkout")
