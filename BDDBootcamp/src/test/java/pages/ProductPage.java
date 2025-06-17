@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class ProductPage {
     WebDriver driver;
     CommonPage common;
@@ -21,12 +23,30 @@ public class ProductPage {
     WebElement bagPackItem;
     @FindBy(id = "add-to-cart-sauce-labs-backpack")
     WebElement addToCart;
+    @FindBy(css = "div.inventory_item_name")
+    List<WebElement> allProducts;
+    @FindBy(xpath = "//button[contains(text(), 'Add to cart')]" )
+    WebElement addToCartButton;
+    @FindBy(css = "a.shopping_cart_link")
+    WebElement ShoppingCartLink;
+
 
     public String checkProducts(){
         return bagPackItem.getText();
     }
-    public CartPage clickBagPackItem(){
-        addToCart.click();
+
+    public CartPage getAllProducts(String productName){
+        for (int i=0; i< allProducts.size(); i++){
+           String productText =  allProducts.get(i).getText();
+           if (productText.contains(productName)){
+               addToCartButton.click();
+               break;
+           }
+        }
+        ShoppingCartLink.click();
         return new CartPage(driver);
+
     }
-}
+
+    }
+

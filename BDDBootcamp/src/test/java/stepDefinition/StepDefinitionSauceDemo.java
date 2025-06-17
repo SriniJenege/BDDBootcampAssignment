@@ -55,9 +55,9 @@ public class StepDefinitionSauceDemo {
     }
     @When("user selects item backpack")
     public void user_selects_item_item() {
-        Assert.assertEquals("Sauce Labs Backpack", product.checkProducts());
+       Assert.assertEquals("Sauce Labs Backpack", product.checkProducts());
         //Returns the object of cartPage
-        cart = product.clickBagPackItem();
+        cart = product.getAllProducts("Sauce Labs Backpack");
     }
     @Then("user selects shopping cart")
     public void user_selects_shopping_cart() {
@@ -72,19 +72,19 @@ public class StepDefinitionSauceDemo {
     }
     @Then("user enters First Name {string}")
     public void user_enters_first_name(String name) {
-        checkout.enterFirstname(prop.getProperty("firstname"));
+       checkout.enterFirstname(prop.getProperty("firstname"));
     }
     @Then("user enters Last Name {string}")
     public void user_enters_last_name(String last) {
-        checkout.enterLastName(prop.getProperty("lastname"));
+       checkout.enterLastName(prop.getProperty("lastname"));
     }
     @Then("user enters Postal Code {string}")
     public void user_enters_postal_code(String postcode) {
-        checkout.enterpostcode(prop.getProperty("postcode"));
+       checkout.enterpostcode(prop.getProperty("postcode"));
     }
     @Then("user clicks continue")
     public void user_clicks_continue() {
-        checkout.clickContinueBtn();
+       checkout.clickContinueBtn();
     }
     @Then("user clicks finish")
     public void user_clicks_finish() {
