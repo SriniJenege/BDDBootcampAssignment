@@ -17,19 +17,14 @@ public class ProductPage {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
-    @FindBy(css = "span.title")
-    WebElement products;
     @FindBy(id = "item_4_title_link")
     WebElement bagPackItem;
-    @FindBy(id = "add-to-cart-sauce-labs-backpack")
-    WebElement addToCart;
     @FindBy(css = "div.inventory_item_name")
     List<WebElement> allProducts;
     @FindBy(xpath = "//button[contains(text(), 'Add to cart')]" )
     WebElement addToCartButton;
     @FindBy(css = "a.shopping_cart_link")
     WebElement ShoppingCartLink;
-
 
     public String checkProducts(){
         return bagPackItem.getText();
@@ -45,8 +40,6 @@ public class ProductPage {
         }
         ShoppingCartLink.click();
         return new CartPage(driver);
-
     }
-
     }
 

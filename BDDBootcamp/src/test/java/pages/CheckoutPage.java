@@ -60,6 +60,5 @@ public class CheckoutPage {
         commonpage = new CommonPage(driver);
         commonpage.waitForElementToVisible(Locator);
         return confirmMessage.getText();
-
     }
 }

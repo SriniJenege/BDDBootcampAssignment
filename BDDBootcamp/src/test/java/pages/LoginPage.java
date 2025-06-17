@@ -30,6 +30,4 @@ public ProductPage clickSubmitButton(){
     submitBtn.click();
     return new ProductPage(driver);
 }
-
-
 }
