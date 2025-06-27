@@ -5,9 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 public class LoginPage {
-    WebDriver driver;
-    ProductPage prod;
+    public WebDriver driver;
+
+
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -26,7 +29,7 @@ public void enterUserName(String user){
 public void enterPassword(String pass){
     passwordField.sendKeys(pass);
 }
-public ProductPage clickSubmitButton(){
+public ProductPage clickSubmitButton() throws IOException {
     submitBtn.click();
     return new ProductPage(driver);
 }

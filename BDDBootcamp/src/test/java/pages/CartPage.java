@@ -18,6 +18,8 @@ public class CartPage {
     WebElement bagPackItem;
     @FindBy(css = "div.inventory_item_price")
     WebElement checkPrice;
+    @FindBy(id = "checkout")
+    WebElement checkoutBtn;
 
     public String checkItem(){
         return bagPackItem.getText();
@@ -27,6 +29,10 @@ public class CartPage {
     }
     public CheckoutPage clickCartContainer(){
         cartContainer.click();
+        return new CheckoutPage(driver);
+    }
+    public CheckoutPage clickCheckOutButton(){
+        checkoutBtn.click();
         return new CheckoutPage(driver);
     }
 }

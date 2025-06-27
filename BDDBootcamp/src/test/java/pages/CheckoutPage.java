@@ -31,6 +31,8 @@ public class CheckoutPage {
     WebElement finishButton;
     @FindBy(css = "h2[data-test='complete-header']")
     WebElement confirmMessage;
+    @FindBy(css = ".summary_tax_label")
+    WebElement checkTax;
 
     By Locator = By.cssSelector("span.title");
 
@@ -60,5 +62,8 @@ public class CheckoutPage {
         commonpage = new CommonPage(driver);
         commonpage.waitForElementToVisible(Locator);
         return confirmMessage.getText();
+    }
+    public String checkTax(){
+        return checkTax.getText();
     }
 }
