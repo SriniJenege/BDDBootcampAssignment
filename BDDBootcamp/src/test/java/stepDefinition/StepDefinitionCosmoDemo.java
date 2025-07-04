@@ -13,17 +13,23 @@ import testBase.TestBaseSetup;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 public class StepDefinitionCosmoDemo {
     WebDriver driver;
     TestBaseSetup testBaseSetup;
+    FileInputStream fs;
+    Properties prop;
+    CosmoPage cosmopage;
 
     @Given("New browser is open")
     public void browser_is_open() throws IOException {
-        driver = new FirefoxDriver();
-        driver.get("https://cosmocode.io/automation-practice-webtable/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5000));
+        fs = new FileInputStream(System.getProperty("user.dir") + "//src//test//resource//global.properties");
+        prop = new Properties();
+        prop.load(fs);
+        testBaseSetup = new TestBaseSetup();
+        driver = testBaseSetup.initializeDriver("urlCosmo");
+        cosmopage = new CosmoPage(driver);
 
     }
 
@@ -34,7 +40,6 @@ public class StepDefinitionCosmoDemo {
 
     @When("checks {string} is spoken in {string}")
     public void checks_is_spoken_in(String country, String language) {
-        CosmoPage cosmopage = new CosmoPage(driver);
         cosmopage.verifyCountryAndLanguage("Argentina", "Spanish");
         driver.quit();
 

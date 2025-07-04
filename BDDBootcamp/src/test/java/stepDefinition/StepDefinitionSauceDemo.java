@@ -31,7 +31,7 @@ public class StepDefinitionSauceDemo {
         prop = new Properties();
         prop.load(fs);
         testBaseSetup = new TestBaseSetup();
-        driver = testBaseSetup.initializeDriver();
+        driver = testBaseSetup.initializeDriver("url");
         login = new LoginPage(driver);
     }
 
